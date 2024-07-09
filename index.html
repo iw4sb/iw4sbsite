@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IW4SB</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden !important;
+        }
+
+        .section {
+            position: relative;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0; /* Initially hide sections */
+        }
+
+        .section:nth-child(odd) {
+            background: #333;
+        }
+
+        .section:nth-child(even) {
+            background: #555;
+        }
+
+        .section .content {
+            z-index: 2;
+        }
+
+        .section1, .section2, .section3, .section4, .section5 {
+            height: 100vh;
+        }
+
+        .section .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .flex-container-wrapper {
+            position: static;
+            width: 40%;
+            margin: auto;
+            max-width: 100% !important;
+            overflow-x: auto !important;
+            white-space: nowrap; /* Prevent content from wrapping */
+        }
+
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            white-space: nowrap; /* Prevent content from wrapping */
+        }
+
+        .showcase-button, .video-button {
+            display: inline-block;
+            background-color: #444;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid transparent;
+            position: relative;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s, margin 0.3s;
+            overflow: hidden;
+            flex: 0 0 auto; /* Ensures the buttons do not stretch */
+            width: 480px;
+            height: 270px;
+        }
+
+        .showcase-button:hover, .video-button:hover {
+            border-color: white;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            margin: 10px;
+            transform: scale(1.05);
+        }
+
+        .showcase-button img, .video-button img {
+            width: 100%;
+            height: calc(100% - 20px);
+            object-fit: cover;
+        }
+
+        .showcase-button span, .video-button span {
+            display: block;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 20px;
+            line-height: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .showcase-button .middle-text, .video-button .middle-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            z-index: 3;
+            padding: 10px;
+        }
+
+        .arrow-left {
+            left: 0;
+        }
+
+        .arrow-right {
+            right: 0;
+        }
+
+        /* Fade-in and fade-out animations */
+        .fade-in {
+            opacity: 1;
+            animation: fade-in 0.5s forwards;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0.8;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-out {
+            opacity: 0;
+            animation: fade-out 0.5s forwards;
+        }
+
+        @keyframes fade-out {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section section1 fade-in">
+        <div class="background" style="background: url('https://i.ibb.co/W2DqY5v/loadscreen-mp-hillside-ss.png') no-repeat center center/cover;"></div>
+        <div class="content">
+            <h1 class="fade-in-text">IW4SB</h1>
+            <p class="fade-in-text">Welcome to SandBox.</p>
+        </div>
+    </div>
+    <div class="section section2 fade-in">
+        <div class="background" style="background: url('https://i.ibb.co/kmd0kj8/loadscreen-mp-sd-jardin.png') no-repeat center center/cover;"></div>
+        <div class="content">
+            <h2 class="fade-in-text">What is Sandbox/IW4SB?</h2>
+            <p class="fade-in-text">Sandbox is a modification of the original Modern Warfare 2 (2009) game...</p>
+            <p class="fade-in-text">All weapons have been ported from different games and balanced within the IW4 engine...</p>
+            <p class="fade-in-text">Find us on Twitter @IW4SB</p>
+        </div>
+    </div>
+    <div class="section section3 fade-in">
+        <div class="background" style="background: url('https://i.ibb.co/r3Kj5JS/loadscreenrender.png') no-repeat center center/cover;"></div>
+        <div class="content">
+            <h2 class="fade-in-text">Showcase</h2>
+            <div class="flex-container-wrapper">
+                <div class="flex-container" id="showcaseContainer">
+                    <div class="showcase-button">
+                        <img src="https://i.ibb.co/kmd0kj8/loadscreen-mp-sd-jardin.png" alt="Article Preview">
+                        <span class="fade-in-text">COD Online Jardin in Sandbox!</span>
+                    </div>
+                    <div class="showcase-button">
+                        <img src="https://i.ibb.co/7JSWn5X/loadscreen-mp-alpha.png" alt="Article Preview">
+                        <span class="fade-in-text">MW3 Lockdown in Sandbox!</span>
+                    </div>
+                    <div class="showcase-button">
+                        <img src="https://i.ibb.co/X54rcQw/loadscreen-mp-paris.png" alt="Article Preview">
+                        <span class="fade-in-text">MW3 Resistance in Sandbox!</span>
+                    </div>
+                    <div class="showcase-button">
+                        <img src="https://i.ibb.co/t4LT32B/Screenshot-2024-07-05-005157.png" alt="Article Preview">
+                        <span class="fade-in-text">Cell Shaded Maps for Fun Modes!</span>
+                    </div>
+                    <div class="showcase-button">
+                        <img src="https://i.ibb.co/WczGf1s/ak47preview.png" alt="Article Preview">
+                        <span class="fade-in-text">MW:R AK:47 in Sandbox!</span>
+                    </div>
+                    <div class="showcase-button">
+                        <img src="https://i.ibb.co/dWBc56d/karambitpreview.png" alt="Article Preview">
+                        <span class="fade-in-text">MW:R Karambit in Sandbox!</span>
+                    </div>
+                    <div class="showcase-button">
+                        <img src="https://i.ibb.co/BsdzDJD/iw4x-2024-06-13-04-09-54.png" alt="Article Preview">
+                        <span class="fade-in-text">COD Online Battle City in Sandbox!</span>                        
+                    </div>
+                    <div class="showcase-button">
+                        <img src="https://i.ibb.co/KXxvMp6/iw4x-2024-06-28-22-03-43.png" alt="Article Preview">
+                        <span class="fade-in-text">MW2 Trailer Park, Modified for Sandbox!</span>                        
+                    </div>
+
+                    <!-- Add more showcase-button divs as needed -->
+                </div>
+                <button class="arrow arrow-left" onclick="scrollLeft1()">&#9664;</button>
+                <button class="arrow arrow-right" onclick="scrollRight()">&#9654;</button>
+            </div>
+        </div>
+    </div>
+    <div class="section section4 fade-in">
+        <div class="background" style="background: url('https://i.ibb.co/WczGf1s/ak47preview.png') no-repeat center center/cover;"></div>
+        <div class="content">
+            <h2 class="fade-in-text">Developer Credits</h2>
+            <p class="fade-in-text">- Yami (Owner, UI Design, Overall Code)</p>
+            <p class="fade-in-text">- Neo (Owner, Level Design, Maps Porting) </p>
+            <p class="fade-in-text">- Mackah (Founder of Original Sandbox)</p>
+            <p class="fade-in-text">- Mist (Weapons)</p>
+            <p class="fade-in-text">- Sloth (Quality Assurance)</p>
+            <p class="fade-in-text">- Nurla (MW2:A Assets)</p>
+            <p class="fade-in-text">- Skeet (Maps Porting)</p>
+            <h3 class="fade-in-text">With help from:</h3>
+            <p class="fade-in-text">- Simon (Lots of things in Sandbox would not be possible without Simon)</p>
+            <p class="fade-in-text">- Sehnys (GSC Support)</p>
+            <p class="fade-in-text">- Seppuku (Health Overlay Design)</p>
+        </div>
+    </div>
+    <div class="section section5 fade-in">
+        <div class="background" style="background: url('https://i.ytimg.com/vi/7PS1DnP9MI0/hqdefault.jpg') no-repeat center center/cover;"></div>
+        <div class="content">
+            <h2>Videos</h2>
+            <div class="flex-container">
+                <a href="https://www.youtube.com/watch?v=7PS1DnP9MI0" class="video-button" target="_blank">
+                    <img src="https://i.ytimg.com/vi/7PS1DnP9MI0/hqdefault.jpg" alt="One Tree Hill Video">
+                    <div class="middle-text">IW4SB Trailer</div>
+                    <span class="fade-in-text">Watch</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=28vzKvlQQf8&t=20s&pp=ygUFaXc0c2I%3D" class="video-button" target="_blank">
+                    <img src="https://i.ytimg.com/an_webp/28vzKvlQQf8/mqdefault_6s.webp?du=3000&sqp=CJCRr7QG&rs=AOn4CLDi7L0CKwXfCxIntWv_JsUxm2SSvg" alt="Flip Video">
+                    <div class="middle-text">IW4SB Beta 0.1 Playtest Highlights</div>
+                    <span class="fade-in-text">Watch</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=k31IofaqH4A&t=146s&ab_channel=thatmanwavez" class="video-button" target="_blank">
+                    <img src="https://i.ytimg.com/an_webp/k31IofaqH4A/mqdefault_6s.webp?du=3000&sqp=CIDyrrQG&rs=AOn4CLApPOtKw2N1blfDEImiXslu5S62Qg" alt="Flip Video">
+                    <div class="middle-text">Does This MW2 Mod have Potential to Rival SM²?</div>
+                    <span class="fade-in-text">Watch</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function scrollLeft1() {
+        var container = document.getElementById('showcaseContainer');
+        container.scrollLeft -= 480; // Adjust this value to match the width of your showcase-button
+    }
+    function scrollRight() {
+        document.getElementById('showcaseContainer').scrollBy({
+            left: 480, // Adjust this value to match the width of your showcase-button
+            behavior: 'smooth'
+        });
+    }
+
+    // Intersection Observer setup
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('fade-out');
+                entry.target.classList.add('fade-in');
+            } else {
+                entry.target.classList.remove('fade-in');
+                entry.target.classList.add('fade-out');
+            }
+        });
+    }, {
+        threshold: 0.25 // Adjust the threshold as needed
+    });
+
+    // Observe each section
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Function to check if an element is in viewport
+</script>
+</html>
